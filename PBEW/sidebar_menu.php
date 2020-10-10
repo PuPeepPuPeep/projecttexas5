@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
@@ -7,7 +10,8 @@
 
 
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Regster</a> <!-- regster -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('login').style.display='block'">Login</a> <!-- login -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Register</a> <!-- register -->
     <a href="#" class="w3-bar-item w3-button">Shirts</a>
     <a href="#" class="w3-bar-item w3-button">Dresses</a>
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
@@ -59,6 +63,11 @@
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
       <i class="fa fa-search"></i>
+
+     <!-- <?php
+        echo $_SESSION['name'];
+      ?>
+      -->
     </p>
   </header>
 
@@ -83,16 +92,37 @@
 <div id="newsletter" class="w3-modal">
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-center">
-      <h2 class="w3-wide">REGSTER</h2>
-      <p>ID</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="ID"></p>
-      <p>PASSWORD</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Pass Word"></p>
-      <p>ADDRESS</p>
-      <p><textarea rows="4" cols="50" class="w3-input w3-border" placeholder="Address" ></textarea></p>
-      <button type="button" class="btn btn-danger" onclick="document.getElementById('newsletter').style.display='none'">ยกเลิก</button>
-      <button type="button" class="btn btn-success"onclick="document.getElementById('newsletter').style.display='none'">ตกลง</button>
-      <!--<i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>-->                     <!-- ตัวกากะบาท -->
+      <form action="register.php" method="post">
+        <h2 class="w3-wide">REGISTER</h2>
+        <p>USERNAME</p>
+        <p><input name="user" class="w3-input w3-border" type="text" placeholder="Username"></p>
+        <p>PASSWORD</p>
+        <p><input name="pass" class="w3-input w3-border" type="password" placeholder="Password"></p>
+        <p>NAME</p>
+        <p><input name="name" class="w3-input w3-border" type="text" placeholder="Name"></p>
+        <p>ADDRESS</p>
+        <p><textarea name="address" rows="4" cols="50" class="w3-input w3-border" placeholder="Address" ></textarea></p>
+        <button type="button" class="btn btn-danger" onclick="document.getElementById('newsletter').style.display='none'">ยกเลิก</button>
+        <button type="submit" class="btn btn-success">ตกลง</button>
+        <!--<i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>-->                     <!-- ตัวกากะบาท -->
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="login" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+    <div class="w3-container w3-white w3-center">
+      <form action="login.php" method="post">
+        <h2 class="w3-wide">LOGIN</h2>
+        <p>USERNAME</p>
+        <p><input name="user" class="w3-input w3-border" type="text" placeholder="Username"></p>
+        <p>PASSWORD</p>
+        <p><input name="pass" class="w3-input w3-border" type="password" placeholder="Password"></p>
+        <button type="button" class="btn btn-danger" onclick="document.getElementById('login').style.display='none'">ยกเลิก</button>
+        <button type="submit" class="btn btn-success">ตกลง</button>
+        <!--<i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>-->                     <!-- ตัวกากะบาท -->
+      </form>
     </div>
   </div>
 </div>
